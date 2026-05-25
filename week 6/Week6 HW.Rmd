@@ -1,0 +1,146 @@
+---
+title: 'Week 6HW R functions'
+author: "Candice Lei (A18585167)"
+date: "2026-04-20"
+format: pdf
+toc: true
+---
+
+#Section 1: Improving analysis code by writing functions
+
+# (A. Can you improve this analysis code?)
+Function input: a numeric vector
+It rescales values to range from 0 to 1 
+Function output: a rescaled numeric vector
+
+```{r}
+rescale01 <- function(x) {
+  if(all(is.na(x))) {
+    return(x)
+  }
+  (x-min(x, na.rm = TRUE)) / (max(x, na.rm = TRUE) - min(x, na.rm = TRUE))
+}
+df <- data.frame(
+a=1:10, 
+b=seq(200,400,length=10),
+c=11:20,
+d=NA
+)
+
+df[] <- lapply(df, rescale01)
+print(df)
+```
+# (B. Can you improve this analysis code?)
+
+```{r}
+library(bio3d)
+
+plot_protein_bfactor <- function(pdb_id, chain_id = "A") {
+  pdb <- read.pdb(pdb_id)
+  pdb_chain <- trim.pdb(pdb, chain = chain_id, elety = "CA")
+  bfactor <- pdb_chain$atom$b
+  
+  plotb3(bfactor, sse = pdb_chain, typ = "l", ylab = "B-factor")
+  
+  return(bfactor)
+}
+```
+
+```{r}
+s1 <- plot_protein_bfactor("4AKE") # kinase with drug
+s2 <- plot_protein_bfactor("1AKE") # kinase no drug
+s3 <- plot_protein_bfactor("1E4Y") # kinase with drug
+```
+Inputs:
+pdb_id = PDB identifier
+chain_id = protein chain to analyze
+
+What it does:
+It reads the PDB structure. It also keeps only the alpha carbons from the chose chain, extracts B-factors and then plots them.
+
+Output:
+A B-factor plot and numeric B-factor vector is returned invisibly
+
+## Q1. What type of object is returned from the **read.pdb()** function?
+
+The function returns a PDB object in r. The PDB objects contains structural information from the protein file.
+
+## Q2. What does the **trim.pdb()** function do?
+
+The function **trim.pdb()** subsets the PDB structure to only keep the selected atoms or residues. For this example, it kept Chain A and atoms of type CA.
+
+## Q3. What input parameter would turn off the marginal black and grey rectangles in the plots and what do they represent in this case?
+
+The sse = FALSE turns off the marginal black and grey rectangles. They represent the secondary structure elements for the protein.
+
+## Q4. What would be a better plot to compare across the different proteins?
+
+A single overlay line plot
+
+## Q5. Which proteins are more similar to each other in their B-factor trends. How could you quantify this?
+
+The two proteins that cluster together in the dendrogram are more similar to each other in their B-factor trends. I can quantify this by using **rbind()** to combine the B-factor vectors, **dist()** to calculate the distances, and **hclust()** clustering.
+
+```{r}
+hc <- hclust( dist( rbind(s1, s2, s3) ) )
+plot(hc)
+```
+
+## Q6. How would you generalize the original code above to work with any set of input protein structures?
+
+```{r}
+library(bio3d)
+
+# Function inputs:
+# pdb_id = 4-character Protein Data Bank ID
+# chain_id = protein chain to analyze
+
+# What function does:
+# The function reads a PDB structure, trims it to the selected chain and CA atoms, extracts the B-factors, and then plots it.
+
+# How to use:
+# Use the **analyze_protein("4AKE")** function 
+# Function output:
+# It returns the B-factor values for selected chain as a numeric vector
+
+analyze_protein <- function(pdb_id, chain_id = "A") {
+  #Read the PDB structure
+  pdb <- read.pdb(pdb_id)
+  
+  #Keep chose chain and CA atoms
+  pdb_chain <- trim.pdb(pdb, chain = chain_id, elety = "CA")
+  
+  #Extract B-factors
+  b_factors <- pdb_chain$atom$b
+  
+  #Plot B-factors
+  plotb3(b_factors,
+         sse = FALSE,
+         typ = "l",
+         ylab = "B-factor",
+         xlab = "Residue Position",
+         main = paste("B-factor plot for", pdb_id, "chain", chain_id))
+  
+  #Return B-factor vector
+  return(b_factors)
+}
+
+#Function calls
+s1 <- analyze_protein("4AKE")
+s2<- analyze_protein("1AKE")
+s3 <- analyze_protein("1E4Y")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
