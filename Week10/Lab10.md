@@ -254,7 +254,7 @@ adk
 m <- nma(adk)
 ```
 
-     Building Hessian...        Done in 0.014 seconds.
+     Building Hessian...        Done in 0.009 seconds.
      Diagonalizing Hessian...   Done in 0.168 seconds.
 
 ``` r
@@ -532,7 +532,7 @@ anno
     4PZL_A       2.10             <NA>                      Adenylate kinase (ADK)
                    ligandId
     1AKE_A              AP5
-    6S36_A CL (3),NA,MG (2)
+    6S36_A MG (2),NA,CL (3)
     6RZE_A    NA (3),CL (2)
     3HPR_A              AP5
     1E4V_A              AP5
@@ -541,12 +541,12 @@ anno
     3X2S_A   JPY (2),AP5,MG
     6HAP_A              AP5
     6HAM_A              AP5
-    4K46_A      ADP,AMP,PO4
+    4K46_A      ADP,PO4,AMP
     3GMT_A          SO4 (2)
-    4PZL_A       CA,FMT,GOL
+    4PZL_A       GOL,FMT,CA
                                                                                  ligandName
     1AKE_A                                                 BIS(ADENOSINE)-5'-PENTAPHOSPHATE
-    6S36_A                                    CHLORIDE ION (3),SODIUM ION,MAGNESIUM ION (2)
+    6S36_A                                    MAGNESIUM ION (2),SODIUM ION,CHLORIDE ION (3)
     6RZE_A                                                  SODIUM ION (3),CHLORIDE ION (2)
     3HPR_A                                                 BIS(ADENOSINE)-5'-PENTAPHOSPHATE
     1E4V_A                                                 BIS(ADENOSINE)-5'-PENTAPHOSPHATE
@@ -555,9 +555,9 @@ anno
     3X2S_A N-(pyren-1-ylmethyl)acetamide (2),BIS(ADENOSINE)-5'-PENTAPHOSPHATE,MAGNESIUM ION
     6HAP_A                                                 BIS(ADENOSINE)-5'-PENTAPHOSPHATE
     6HAM_A                                                 BIS(ADENOSINE)-5'-PENTAPHOSPHATE
-    4K46_A                   ADENOSINE-5'-DIPHOSPHATE,ADENOSINE MONOPHOSPHATE,PHOSPHATE ION
+    4K46_A                   ADENOSINE-5'-DIPHOSPHATE,PHOSPHATE ION,ADENOSINE MONOPHOSPHATE
     3GMT_A                                                                  SULFATE ION (2)
-    4PZL_A                                                 CALCIUM ION,FORMIC ACID,GLYCEROL
+    4PZL_A                                                 GLYCEROL,FORMIC ACID,CALCIUM ION
                                                      source
     1AKE_A                                 Escherichia coli
     6S36_A                                 Escherichia coli
