@@ -10,11 +10,11 @@ Class 5: [Data exploration and visualization in R](Week5.md)
 
 Class 6: [Introduction to R](Week6.md)
 
-Class 7: [
+Class 7: [Introduction to machine learning for Bioinformatics](Class7.md)
 
-Class 8: [
+Class 8: [Unsupervised Learning Mini-Project]
 
-Class 9: [
+Class 9: [Candy Mini-Project]
 
 Class 10: [Structural Informatics pt. 1](Lab10.md)
 
