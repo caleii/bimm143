@@ -1,0 +1,21 @@
+---
+title: "Week4: Introduction to R"
+author: "Candice Lei (A18585167)"
+date: 2026-04-13
+format: pdf
+toc: true
+---
+
+
+
+```{r}
+# A plot from week 3
+x <- 1:50
+
+plot(x, sin(x))
+```
+```{r}
+# make this a bit nicer
+plot(x,sin(x), type="l", col = "blue", lwd = 2)
+```
+
