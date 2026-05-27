@@ -12,18 +12,20 @@ Class 6: [Introduction to R](Week6.md)
 
 Class 7: [Introduction to machine learning for Bioinformatics](Class7.md)
 
-Class 8: [Unsupervised Learning Mini-Project]
+Class 8: [Unsupervised Learning Mini-Project](Week8.md)
 
-Class 9: [Candy Mini-Project]
+Class 9: [Candy Mini-Project](Lab09.md)
 
 Class 10: [Structural Informatics pt. 1](Lab10.md)
 
-Class 11:
+Class 11: [Structural Bioinformatics (pt2. Focus on new AlphaFold2)](Lab11.md)
 
-Class 12:
+Class 12: [Genome informatics](Week12.md)
 
-Class 13:
+Class 13: [Transcriptomics and the analysis of RNA-Seq data](Week13.md)
 
-Class 14:
+Class 14: [RNA-Seq analysis mini-project](Week14.md)
 
-Class 15: 
+Class 18: [Mini Project: Investigating Pertussis Resurgence]
+
+Class 19: [Mini Project: Cancer Mutation Analysis]
