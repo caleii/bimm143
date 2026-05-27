@@ -1,16 +1,14 @@
 ---
 title: "Week5: Data Viz with ggplot2"
-author: "Candice Lei"
+author: "Candice Lei (A18585167)"
 format: pdf
-toc: false
+toc: true
 ---
 
 ## Background
 
-There are many graphic systems in R for making plots and figures. These include so-called base R graphics like the `plot()` function and add on packages like ggplot2
-
+There are many graphic systems in R for making plots and figures. These include so-called base R graphics like the `plot()` function and add on packages like `ggplot2`
 Let's compare how we make a simple figure with these two systems:
-
 We can use the in-build 'cars' dataset:
 
 ```{r}
@@ -19,21 +17,21 @@ head(cars)
 ```{r}
 plot(cars)
 ```
-Before I can use ggplot2 I need to install it on my computer. To do this, we can use the function `install.packages("ggplot2")
-
+Before I can use ggplot2 I need to install it on my computer. To do this, we can use the function 'install.packages("ggplot2")
 Once installed we need to load up the package into our R brain:
 
 ```{r}
 library(ggplot2)
 ggplot(cars)
 ```
-Every ggplot has at least 3 layers
+Every ggplot has at least 3 layers:
 
 ```{r}
 ggplot(cars) +
   aes(x = speed, y = dist) +
   geom_point()
 ```
+
 ## Add some custom features
 
 Let's add a trend line that shows the relationship between speed and distance
@@ -61,15 +59,19 @@ url <- "https://bioboot.github.io/bimm143_S20/class-material/up_down_expression.
 genes <- read.delim(url)
 head(genes)
 ```
+
 ```{r}
 nrow(genes)
 ```
+
 ```{r}
 colnames(genes)
 ```
+
 ```{r}
 ncol(genes)
 ```
+
 ```{r}
 sum(genes$State == "up")
 ```
@@ -90,14 +92,16 @@ ggplot(genes) +
 ggplot(genes) +
   aes(x = Condition1, y = Condition2, col = State) +
   geom_point() +
-  scale_color_manual(values=c("purple", "gray", "orange")) +
+  scale_color_manual(values = c("purple", "gray", "orange")) +
   theme_bw() +
-  labs(title = "Gene Expression Changes Upon Drug Treatment", x = "Control (No Drugs)", y = "Drug Treatment")
+  labs(title = "Gene Expression Changes Upon Drug Treatment", x = "Control (No drug)", y = "Drug Treatment")
 ```
 ## Going Further
 
 Here we read the famous gapminder dataset
+
 ```{r}
+# File location online
 # File location online
 url <- "https://raw.githubusercontent.com/jennybc/gapminder/master/inst/extdata/gapminder.tsv"
 
@@ -117,8 +121,7 @@ length(unique(gapminder$country))
 ```
 
 Let's make our first plot of the entire dataset:
-Plot of "gdpPercap" vs. "lifeExp" colored by "continent"
-
+Plot of "gdpPercap" vs "LifeExp" colored by "continent"
 ```{r}
 p <- ggplot(gapminder) +
   aes(gdpPercap, lifeExp, col = continent) +
@@ -132,7 +135,7 @@ p +
   facet_wrap(~continent)
 ```
 Make a plot for 1977 and 2007 only
-> Q. First use the dplyr package and the `filter()` function from that package to extract the year 2007.
+> Q. First use the `dplyr` package and the `filter()` function from that package to extract the year 2007.
 
 ```{r}
 library(dplyr)
@@ -141,13 +144,15 @@ g07 <- filter(gapminder, year == 2007)
 g77 <- filter(gapminder, year == 1977)
 g <- filter(gapminder, year == 2007 | year == 1977)
 ```
+
 ```{r}
 ggplot(g) +
   aes(gdpPercap, lifeExp, col = continent, size = pop) +
   geom_point(alpha = 0.3) +
   facet_wrap(~year)
 ```
-> Q. Make a histogram of lifeExp colored by continent 
+> Q. Make a histogram of lifeExp colored by continent
+> Q. Make a histogram of lifeExp faceted by continent
 
 ```{r}
 ggplot(gapminder) +
@@ -165,3 +170,6 @@ ggplot(gapminder) +
   geom_histogram() +
   facet_wrap(~continent)
 ```
+
+
+
