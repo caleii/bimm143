@@ -27,5 +27,3 @@ Class 13: [Transcriptomics and the analysis of RNA-Seq data](Week13/Week13.md)
 Class 14: [RNA-Seq analysis mini-project](Week14/Week14.md)
 
 Class 18: [Mini Project: Investigating Pertussis Resurgence]
-
-Class 19: [Mini Project: Cancer Mutation Analysis]
